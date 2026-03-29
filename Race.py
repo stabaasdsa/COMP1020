@@ -18,7 +18,7 @@ class Horse:
         roll_value = self.dice.roll()
         self.x_pos = self.x_pos + roll_value
 
-        if self.window is not None:
+        if self.window is not None and type(self.image) is not str:
             self.image.move(roll_value, 0)
 
     # Check horse cross line
