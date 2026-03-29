@@ -4,24 +4,26 @@ from Dice import *
 # Horse class: Shows each horse in the race (Position, Movement, Drawing)
 class Horse:
     def __init__(self, speed, y, image, window):
-        self.x = 40
-        self.y = y
+        self.x_pos = 0
+        self.y_pos = y
         self.image = image
         self.window = window
         self.dice = Dice(speed)
 
     def draw(self):
-        self.image.draw_at_pos(self.window, self.x, self.y)
+        self.image.draw_at_pos(self.window, self.x_pos, self.y_pos)
 
     # Move horse by dice roll
     def move(self):
         roll_value = self.dice.roll()
-        self.x = self.x + roll_value
-        self.image.move(roll_value, 0)
+        self.x_pos = self.x_pos + roll_value
+
+        if self.window is not None:
+            self.image.move(roll_value, 0)
 
     # Check horse cross line
     def crossed_finish_line(self, finish_x):
-        return self.x >= finish_x
+        return self.x_pos >= finish_x
 
 
 def main():
@@ -81,8 +83,10 @@ def main():
 
         # Close the window if click
         winner_text.draw(win)
-        win.getMouse()
-        win.close()
+
+        if not win.isClosed():
+            win.getMouse()
+            win.close()
 
 if __name__ == '__main__':
     main()
