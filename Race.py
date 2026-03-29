@@ -1,3 +1,9 @@
+"""
+For COMP1010 University of Utah
+COMP 1020 Assignment A2: Horse Race
+Assignment written by: Jungwoo Pak, U1561629
+"""
+
 from graphics import *
 from Dice import *
 
